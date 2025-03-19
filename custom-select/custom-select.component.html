@@ -1,0 +1,19 @@
+<div class="custom-select">
+  <div class="select-header" (click)="toggleDropdown()">
+    <span *ngIf="selectedOption">+{{ selectedOption.countryCode }}</span>
+    <span class="arrow-icon" [class.rotated]="isDropdownOpen">
+      <img src="assets/drobdown.png" alt="dropdown arrow" />
+    </span>
+  </div>
+
+  <ul *ngIf="isDropdownOpen" class="select-list">
+    <li class="dropdown-header">
+      <span></span>
+      <span class="close-icon" (click)="closeDropdown($event)">×</span>
+    </li>
+    <li *ngFor="let option of options" class="dropdown-item" (click)="selectOption(option)">
+      <span id="code">(+{{ option.countryCode }})</span>
+      <span id="name">{{ option.countryName }} </span>
+    </li>
+  </ul>
+</div>
