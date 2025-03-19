@@ -190,6 +190,20 @@ input {
   .transaction-message {
     font-size: 20px;
   }
+}
 
+@media (max-width: 430px) {
+  .logo {
+    left: 15%;
+    top: 30%;
+  }
+}
 
+@media (max-height: 420px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .logo {
+    left: 15%;
+  }
 }

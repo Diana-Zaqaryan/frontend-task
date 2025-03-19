@@ -28,6 +28,7 @@ header {
   align-items: center;
   gap: 1.5em;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 
@@ -125,8 +126,9 @@ i {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("/assets/profile.webp");
+  background-image: url("/assets/images.jpg");
   background-repeat: no-repeat;
+  background-position-x: center;
   background-size: cover;
 }
 
@@ -267,6 +269,9 @@ input[type="password"] {
   .main-container {
     width: 85%;
   }
+  .header-container {
+    padding: 10px;
+  }
 }
 
 
@@ -274,4 +279,9 @@ input[type="password"] {
   .main-container {
     width: 95%;
   }
+  .header-icons, .left-side {
+    gap: 1em;
+  }
+
+
 }
