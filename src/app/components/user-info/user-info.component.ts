@@ -1,6 +1,5 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {CountryModel} from '../../../utils/models/country.model';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'user-info',
@@ -9,10 +8,10 @@ import {CountryModel} from '../../../utils/models/country.model';
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.scss'],
 })
-export class UserInfoComponent implements OnInit, OnChanges{
+export class UserInfoComponent implements OnInit, OnChanges {
   @Input() options: any[] = [];
   public isDropdownOpen = false;
-  isCountryType: boolean = false;
+  public isCountryType: boolean = false;
 
 
   public ngOnInit() {
@@ -21,13 +20,13 @@ export class UserInfoComponent implements OnInit, OnChanges{
   public ngOnChanges(changes: SimpleChanges) {
     if (this.options.length) {
       this.isCountryType = this.checkIfCountryType(this.options);
-
     }
   }
 
   private checkIfCountryType(options: any[]): boolean {
     return options.length > 0 && options[0].hasOwnProperty('countryCode');
   }
+
   public toggleDropdown() {
     this.isDropdownOpen = !this.isDropdownOpen;
   }

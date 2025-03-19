@@ -14,5 +14,23 @@
   "USER": {
     "FIRST_NAME": "John",
     "LAST_NAME": "Smith"
-  }
+  },
+  "ACCOUNT_TYPE": "Account Type",
+  "ACCOUNT_TYPES": {
+    "VISA PLATINUM CARD ACCOUNT": "VISA Platinum Card Account",
+    "SAVING ACCOUNT": "Saving Account",
+    "BANK ACCOUNT": "Bank Account"
+  },
+  "ACCOUNT_NUMBER": "Account Number",
+  "CURRENCY": "Currency",
+  "CURRENCIES": {
+    "USD": "USD",
+    "EUR": "Euro",
+    "AMD": "AMD"
+  },
+  "BALANCE": "Balance",
+  "ADDITIONAL_INFO": "Additional Info",
+  "TITLE": "Title",
+  "PASSWORD_REQUIRED": "Password is required",
+  "PHONE_REQUIRED": "Phone number is required"
 }

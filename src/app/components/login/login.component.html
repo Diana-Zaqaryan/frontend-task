@@ -14,7 +14,7 @@
     </div>
 
 
-    <form  [formGroup]="loginForm" (ngSubmit)="isPhoneSendSuccess ? login() : next()">
+    <form [formGroup]="loginForm" (ngSubmit)="isPhoneSendSuccess ? login() : next()">
       <div class="phone-container">
         <div class="country-code-container">
           <label for="countryCode">{{ 'SELECT_CODE' | translate }}</label>
@@ -28,24 +28,33 @@
 
         <div class="phone-input-container">
           <label for="phone">{{ 'ENTER_MOBILE_NUMBER' | translate }}</label>
-          <input type="text" formControlName="phone" onlyNumbers id="phone"/>
+          <input type="text" formControlName="phone" onlyNumbers id="phone"
+                 [ngClass]="{'invalid-input': loginForm.get('phone')?.invalid && loginForm.get('phone')?.touched}"/>
+          <div *ngIf="loginForm.get('phone')?.invalid && loginForm.get('phone')?.touched" class="error-message">
+            {{ 'PHONE_REQUIRED' | translate }}
+          </div>
         </div>
       </div>
 
       <ng-container *ngIf="isPasswordVisible">
         <div class="password-container">
           <input [type]="passwordVisible ? 'text' : 'password'"
-                 formControlName= "password"
+                 formControlName="password"
                  [placeholder]="'ENTER_PASSWORD' | translate"
+                 [ngClass]="{'invalid-input': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
                  id="password"/>
           <i class="fa"
              [class.fa-eye]="!passwordVisible"
              [class.fa-eye-slash]="passwordVisible"
              (click)="togglePasswordVisibility()"></i>
+          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error-message">
+            {{ 'PASSWORD_REQUIRED' | translate }}
+          </div>
         </div>
+
       </ng-container>
 
-      <button  id="handle-btn" [disabled]="loginForm.invalid">
+      <button id="handle-btn" [disabled]="loginForm.invalid">
         {{ isPhoneSendSuccess ? ('LOGIN' | translate) : ('NEXT' | translate) }}
       </button>
     </form>

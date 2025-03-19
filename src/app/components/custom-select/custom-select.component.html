@@ -1,19 +1,23 @@
-<div class="custom-select">
+<div class="custom-select"  role="combobox">
   <div class="select-header" (click)="toggleDropdown()">
-    <span *ngIf="selectedOption">+{{ selectedOption.countryCode }}</span>
+    <span>@if (selectedOption) { +{{ selectedOption.countryCode }} }</span>
     <span class="arrow-icon" [class.rotated]="isDropdownOpen">
-      <img src="assets/drobdown.png" alt="dropdown arrow" />
+      <img src="assets/drobdown.png" alt="Open dropdown" loading="lazy" />
     </span>
   </div>
 
-  <ul *ngIf="isDropdownOpen" class="select-list">
+  @if (isDropdownOpen) {
+  <ul class="select-list" role="listbox">
     <li class="dropdown-header">
-      <span></span>
-      <span class="close-icon" (click)="closeDropdown($event)">×</span>
+    <span></span>
+      <span class="close-icon" (click)="closeDropdown($event)" aria-label="Close">×</span>
     </li>
-    <li *ngFor="let option of options" class="dropdown-item" (click)="selectOption(option)">
-      <span id="code">(+{{ option.countryCode }})</span>
-      <span id="name">{{ option.countryName }} </span>
-    </li>
+    @for (option of options; track option.countryCode) {
+      <li class="dropdown-item" (click)="selectOption(option)" role="option" tabindex="0">
+        <span id="code">(+{{ option.countryCode }})</span>
+        <span id="name">{{ option.countryName }}</span>
+      </li>
+    }
   </ul>
+  }
 </div>

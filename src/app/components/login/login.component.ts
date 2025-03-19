@@ -1,7 +1,7 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpService} from '../../services/http.service';
 import {AuthService} from '../../services/auth.service';
-import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {onlyNumbersDirective} from '../../directives/only-numbers.directive';
 import {CountryModel} from '../../../utils/models/country.model';
@@ -10,13 +10,12 @@ import {CustomSelectComponent} from '../custom-select/custom-select.component';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 
 
-
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  imports: [FormsModule,ReactiveFormsModule, CommonModule, onlyNumbersDirective, CustomSelectComponent, TranslateModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, onlyNumbersDirective, CustomSelectComponent, TranslateModule],
 })
 export class LoginComponent {
   public countries: CountryModel[] = [];
@@ -33,7 +32,7 @@ export class LoginComponent {
               private authService: AuthService,
               private translate: TranslateService,
               private fb: FormBuilder,
-              private cdr: ChangeDetectorRef) {
+  ) {
     this.translate.setDefaultLang('en');
 
   }
@@ -64,20 +63,22 @@ export class LoginComponent {
 
   public next() {
     if (!this.selectedCountry) return;
-
+    this.loginForm.get('phone')?.markAsTouched();
     const phoneNumber = this.selectedCountry.countryCode + this.loginForm.get('phone')?.value;
-    this.httpService.checkPhone({username: phoneNumber}).subscribe( () => {
-      this.isPhoneSendSuccess = true;
-      this.isPasswordVisible = true;
-      if (!this.loginForm.contains('password')) {
-        this.loginForm.addControl('password', this.fb.control('', Validators.required));
-      }
+    this.httpService.checkPhone({username: phoneNumber}).subscribe(() => {
+        this.isPhoneSendSuccess = true;
+        this.isPasswordVisible = true;
+        if (!this.loginForm.contains('password')) {
+          this.loginForm.addControl('password', this.fb.control('', Validators.required));
+        }
       }
     );
   }
 
   public login() {
-    if (!this.selectedCountry) return;
+    this.loginForm.markAllAsTouched();
+
+    if (!this.selectedCountry || this.loginForm.invalid) return;
     const username = this.selectedCountry.countryCode + this.loginForm.get('phone')?.value;
     const password = this.loginForm.get('password')?.value
     try {
@@ -88,6 +89,7 @@ export class LoginComponent {
         },
         (error) => {
           console.error('Login error:', error);
+          alert(error.message)
         }
       );
     } catch (e: any) {
@@ -99,7 +101,6 @@ export class LoginComponent {
   public togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
-
 
   public changeLanguage(lang: string) {
     this.translate.use(lang);

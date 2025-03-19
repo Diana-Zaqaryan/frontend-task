@@ -1,14 +1,7 @@
-import {ApplicationConfig, importProvidersFrom, provideZoneChangeDetection} from '@angular/core';
+import {ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
 import {provideRouter} from '@angular/router';
-
 import {routes} from './app.routes';
-import {
-  HTTP_INTERCEPTORS, HttpClient, HttpClientModule,
-  HttpInterceptorFn,
-  provideHttpClient,
-  withInterceptors,
-  withInterceptorsFromDi
-} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {LoadingInterceptor} from './interceptors/loadingr.interceptor';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';

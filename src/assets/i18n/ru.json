@@ -14,5 +14,23 @@
   "USER": {
     "FIRST_NAME": "Джон",
     "LAST_NAME": "Смит"
-  }
+  },
+  "ACCOUNT_TYPE": "Тип счета",
+  "ACCOUNT_TYPES": {
+    "VISA PLATINUM CARD ACCOUNT": "Счет VISA Platinum",
+    "SAVING ACCOUNT": "Сберегательный счет",
+    "BANK ACCOUNT": "Банковский счет"
+  },
+  "ACCOUNT_NUMBER": "Номер счета",
+  "CURRENCY": "Валюта",
+  "CURRENCIES": {
+    "USD": "Доллар",
+    "EUR": "Евро",
+    "AMD": "Драм"
+  },
+  "BALANCE": "Баланс",
+  "ADDITIONAL_INFO": "Дополнительная информация",
+  "TITLE": "Заголовок",
+  "PASSWORD_REQUIRED": "Пароль обязателен",
+  "PHONE_REQUIRED": "Номер телефона обязателен"
 }

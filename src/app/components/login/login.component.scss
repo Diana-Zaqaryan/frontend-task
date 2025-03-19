@@ -24,6 +24,7 @@
   left: 15%;
   top: 15%;
 }
+
 .logo img {
   width: 150px;
   margin-bottom: 20px;
@@ -37,7 +38,7 @@
   text-align: start;
 }
 
-.right-section, form{
+.right-section, form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,6 +47,29 @@
   gap: 2.5em;
   margin: 0 auto;
 }
+.lang-btn {
+  position: absolute;
+  top: 5%;
+  right: 0;
+
+  button {
+    background: none;
+    border: none;
+    border-right: 1px solid;
+    font-size: 14px;
+    padding: 0 10px;
+    cursor: pointer;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 form {
   margin: 0 auto;
 }
@@ -54,6 +78,7 @@ form {
   display: flex;
   justify-content: space-between;
   width: 100%;
+
   label {
     font-size: 12px;
     color: rgba(77, 77, 77, 50%);
@@ -63,30 +88,56 @@ form {
 .country-code-container, .phone-input-container {
   display: flex;
   flex-direction: column;
-  gap: 13px
 }
 
+.password-container {
+  width: 100%;
+  position: relative;;
+}
+
+.fa {
+  position: absolute;
+  right: 1em;
+  top: 1.4em;
+}
+
+
+
+.error-message {
+  color: red;
+  font-size: 10px;
+  margin: 0;
+}
+.invalid-input {
+  border: 2px solid red;
+  background-color: #f8d7da;
+}
 
 input {
   height: 38px;
   width: 236px;
   border: 1px solid rgba(0, 0, 0, 20%);
-  border-radius:  0 10px 10px 0 ;
+  border-radius: 0 10px 10px 0;
   padding: 10px;
   font-size: 16px;
+  margin-top: 12px;
+
   &:focus-visible {
     outline: none;
   }
 
 }
+
 #phone {
   &:-internal-autofill-selected-internal-autofill-selected {
     background-color: #fff !important;
   }
 }
+
 #password {
   width: 100%;
-  border-radius:  10px;
+  border-radius: 10px;
+
   &:-internal-autofill-selected-internal-autofill-selected {
     background-color: #fff !important;
   }
@@ -101,49 +152,15 @@ input {
   border-radius: 30px;
   font-size: 16px;
   font-weight: 700;
-}
-select {
-  padding: 0 10px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url('/assets/drobdown.png');
-  border: 1px solid red;
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 25px;
-}
-
-
-.password-container {
-  width: 100%;
-  position: relative;;
-}
-.fa {
-  position: absolute;
-  right: 1em;
-  top: 0.7em;
-}
-
-.lang-btn {
-  position: absolute;
-  top: 5%;
-  right: 0;
-  button{
-    background: none;
-    border: none;
-    border-right: 1px solid;
-    font-size: 14px;
-    padding: 0 10px;
-    cursor: pointer;
-    &:last-child {
-      border-right: none;
-    }
-    &:hover {
-      text-decoration: underline;
+  &{
+    &:disabled {
+      background-color: #d3d3d3;
+      color: #a1a1a1;
+      cursor: not-allowed;
     }
   }
 }
+
 
 /**** Media ******/
 
@@ -153,6 +170,7 @@ select {
   }
 
 }
+
 @media (max-width: 768px) {
   .grid-container {
     grid-template-columns: 1fr;
@@ -166,7 +184,7 @@ select {
     top: 30%;
   }
 
-  .logo img{
+  .logo img {
     width: 200px;
   }
   .transaction-message {

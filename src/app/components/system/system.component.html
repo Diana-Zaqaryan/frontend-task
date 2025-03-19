@@ -3,13 +3,14 @@
     <div class="header-container">
       <div class="right-side">
         <div class="log">
-<!--          <img src="assets/logo.png" alt="logo">-->
+          <img src="assets/logo.png" alt="logo">
         </div>
       </div>
 
       <div class="left-side">
         <div class="search">
-          <input type="search" id="search" [(ngModel)]="searchTerm" placeholder="{{ 'SEARCH' | translate }}" (input)="onSearch()">
+          <input type="search" id="search" [(ngModel)]="searchTerm" placeholder="{{ 'SEARCH' | translate }}"
+                 (input)="onSearch()">
           <i class="fas fa-search" style="font-size: 16px"></i>
         </div>
 
@@ -23,7 +24,7 @@
             </div>
           </div>
           <div class="account" [ngStyle]="{'background-color': accountColor}">
-            {{ userData.firstName.slice(0,1) }}
+<!--            {{('USER.FIRST_NAME' | translate).slice(0, 1) }}-->
           </div>
         </div>
 
@@ -55,24 +56,24 @@
     <div class="main-container">
 
       <div class="title">
-        Title
+        {{ 'TITLE' | translate}}
       </div>
 
       <div class="main-content">
         @for (item of bankAccounts; track item.accountNumber) {
-          <div class="account-details">
-            <div class="visa">
-              <img src="assets/VIsa.png" alt="visa" class="visa">
-            </div>
+        <div class="account-details">
+          <div class="visa">
+            <img src="assets/VIsa.png" alt="visa" class="visa">
+          </div>
 
-            <div class="type">
-              <label for="type">Account type</label>
-              <span id="type">{{ item.accountType| uppercase }}</span>
+          <div class="type">
+            <label for="type">{{'ACCOUNT_TYPE' | translate }}</label>
+            <span id="type">{{ 'ACCOUNT_TYPES.' + item.accountType  |uppercase | translate }}</span>
             </div>
 
 
             <div class="number">
-              <label for="number">Account number</label>
+              <label for="number">{{'ACCOUNT_NUMBER' | translate}}</label>
               <div class="number-input">
                 <input [disabled]="true" id="number"
                        [type]="accountVisibility[item.accountNumber] ? 'text' : 'password'"
@@ -87,13 +88,13 @@
 
 
             <div class="currency">
-              <label for="currency">Currency</label>
-              <span id="currency">{{ item.currency }}</span>
+              <label for="currency">{{'CURRENCY' | translate}}</label>
+              <span id="currency">{{ 'CURRENCIES.' + item.currency | translate }}</span>
             </div>
 
 
             <div class="balance">
-              <label for="balance">Balance</label>
+              <label for="balance">{{'BALANCE' | translate}}</label>
               <div class="balance-info">
                 <input [disabled]="true" id="balance"
                        [type]="balanceVisibility[item.accountNumber] ? 'text' : 'password'"
@@ -114,7 +115,7 @@
       <div class="additional-info-container">
         <div class="additional-info">
           <div class="additional-title">
-            {{ 'additional info' | uppercase }}
+            {{ 'ADDITIONAL_INFO' | uppercase | translate}}
           </div>
           <div class="additional-content">
             {{additionalData.description}}

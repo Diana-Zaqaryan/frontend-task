@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 5em;
 }
+
 header {
   background: #4D4D4D;
   display: flex;
@@ -25,12 +26,12 @@ header {
 .left-side {
   display: flex;
   align-items: center;
-  gap: 2em;
+  gap: 1.5em;
   flex-wrap: wrap;
 }
 
 
-.header-icons{
+.header-icons {
   display: flex;
   gap: 2em;
   justify-content: space-between;
@@ -48,7 +49,7 @@ i {
 }
 
 .lang-btn {
-  button{
+  button {
     background: none;
     border: none;
     border-right: 1px solid;
@@ -56,9 +57,11 @@ i {
     padding: 0 10px;
     cursor: pointer;
     color: #ffffff;
+
     &:last-child {
       border-right: none;
     }
+
     &:hover {
       text-decoration: underline;
     }
@@ -76,8 +79,9 @@ i {
   border-radius: 30px;
   height: 24px;
   width: 170px;
-  padding: 15px 25px ;
+  padding: 15px 25px;
   color: #ffffff;
+
   &:focus-visible {
     outline: none;
   }
@@ -94,12 +98,13 @@ i {
   left: 5%;
 }
 
-.user-data{
+.user-data {
   display: flex;
   align-items: center;
   gap: 1em;
 }
-.user-data div{
+
+.user-data div {
   color: #ffffff;
 }
 
@@ -107,6 +112,7 @@ i {
   font-size: 12px;
   display: flex;
   justify-content: space-between;
+  gap: 5px;
 }
 
 
@@ -119,11 +125,15 @@ i {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url("/assets/profile.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .fa-bell, .fa-envelope {
   position: relative;
 }
+
 .not-number, .mail-number {
   position: absolute;
   background: #ff4733;
@@ -138,25 +148,29 @@ i {
 .main-container {
   width: 60%;
   margin: 5em auto;
-  @include flex-style
+  @include flex-style;
+  gap: 0
 }
 
-.main-content  {
+.main-content {
   display: flex;
   flex-direction: column;
   gap: 5em;
   margin-top: 5em;
   border: 1px solid #ff4733;
-  border-radius: 10px;
+  border-radius: 15px;
   padding: 25px;
 
 }
+
 .account-details {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #ff4733;
   padding: 10px 0;
-  &:last-child{
+  flex-wrap: wrap;
+
+  &:last-child {
     border: none;
   }
 
@@ -167,6 +181,7 @@ i {
   flex-direction: column;
   justify-content: center;
   gap: .5em;
+
   span {
     width: 145px;
     font-size: 14px;
@@ -175,7 +190,7 @@ i {
 }
 
 
-.visa  {
+.visa {
   width: 100px;
   border-radius: 10px;
 }
@@ -190,10 +205,13 @@ label {
 .fa-eye, .fa-eye-slash {
   color: #4D4D4D;
   font-size: 16px;
+  border: 1px solid rgba(70, 70, 70, 70%);
+  border-radius: 50%;
+  padding: 2px 2.5px;
 }
 
 
-#number, #balance{
+#number, #balance {
   background: transparent;
   border: none;
   font-size: 14px;
@@ -202,10 +220,10 @@ label {
 }
 
 input[type="password"] {
-  font-family: monospace ;
+  font-family: monospace;
 }
 
-.number-input, .balance-info{
+.number-input, .balance-info {
   display: flex;
   gap: .5em;
 }
@@ -217,17 +235,43 @@ input[type="password"] {
 
 
 .additional-info-container {
-  border: 1px solid rgba(77,77,77, 50%);
+  border: 1px solid rgba(77, 77, 77, 50%);
   border-radius: 15px;
+  margin-top: 2em;
 }
 
 .additional-info {
-  @include flex-style
+  @include flex-style;
+  gap: 0em;
 }
+
 .additional-title {
-  background: rgba(77,77,77, 50%);
-  border-radius: 15px  15px 0 0;
-  height: 2em;
+  background: rgba(77, 77, 77, 50%);
+  border-radius: 13px 13px 0 0;
+  display: flex;
+  align-items: center;
+  padding: .5em 1.5em;
+  color: #ffffff;
+  font-weight: 700;
 
 }
 
+.additional-content {
+  padding: 0.5em 1.5em;
+}
+
+
+/******Media ***/
+
+@media screen and (max-width: 1024px) {
+  .main-container {
+    width: 85%;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .main-container {
+    width: 95%;
+  }
+}

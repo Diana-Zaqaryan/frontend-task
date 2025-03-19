@@ -14,5 +14,23 @@
   "USER": {
     "FIRST_NAME": "Ջոն",
     "LAST_NAME": "Սմիթ"
-  }
+  },
+  "ACCOUNT_TYPE": "Հաշվի տեսակը",
+  "ACCOUNT_TYPES": {
+    "VISA PLATINUM CARD ACCOUNT": "VISA Պլատինում քարտի հաշիվ",
+    "SAVING ACCOUNT": "Խնայողական հաշիվ",
+    "BANK ACCOUNT": "Բանկային հաշիվ"
+  },
+  "ACCOUNT_NUMBER": "Հաշվի համարը",
+  "CURRENCY": "Արժույթ",
+  "CURRENCIES": {
+    "USD": "ԱՄՆ դոլար",
+    "EUR": "Եվրո",
+    "AMD": "Դ"
+  },
+  "BALANCE": "Մնացորդ",
+  "ADDITIONAL_INFO": "Լրացուցիչ տեղեկություն",
+  "TITLE": "Վերնագիր",
+  "PASSWORD_REQUIRED": "Գաղտնաբառը պահանջվում է",
+  "PHONE_REQUIRED": "Հեռախոսահամարը պարտադիր է"
 }

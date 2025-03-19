@@ -1,6 +1,6 @@
-import { Directive, HostListener } from '@angular/core';
+import {Directive, HostListener} from '@angular/core';
 
-@Directive({ selector: '[onlyNumbers]' })
+@Directive({selector: '[onlyNumbers]', standalone: true})
 export class onlyNumbersDirective {
   @HostListener('input', ['$event']) onInput(event: any) {
     const input = event.target;

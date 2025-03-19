@@ -13,12 +13,12 @@ import {NumberTransformPipe} from '../../pipes/number-transform.pipe';
 
 @Component({
   selector: 'app-system',
-  imports: [FormsModule, CommonModule, UserInfoComponent,TranslateModule, NumberTransformPipe],
+  imports: [FormsModule, CommonModule, UserInfoComponent, TranslateModule, NumberTransformPipe],
   templateUrl: './system.component.html',
   styleUrl: './system.component.scss',
   standalone: true
 })
-export class SystemComponent implements OnInit{
+export class SystemComponent implements OnInit {
   public userData!: User;
   public bankAccounts!: BankAccount[];
   public additionalData: any;
@@ -70,25 +70,15 @@ export class SystemComponent implements OnInit{
       companyName: 'GreenTech Innovations',
       companyType: 'Corporation',
       position: 'Product Manager'
-    },
-    {
-      companyName: 'Digital Solutions Group',
-      companyType: 'Private Limited',
-      position: 'Business Development Manager'
-    },
-    {
-      companyName: 'SmartWorks Global',
-      companyType: 'LLC',
-      position: 'Chief Strategy Officer'
     }
   ];
-
 
 
   constructor(private httpService: HttpService,
               private router: Router,
               private authService: AuthService,
-              private translate: TranslateService,) {}
+              private translate: TranslateService,) {
+  }
 
   public ngOnInit() {
     const token = this.authService.getToken();
@@ -117,13 +107,13 @@ export class SystemComponent implements OnInit{
     });
 
 
-
   }
 
 
   public onSearch(): void {
     console.log('Search :', this.searchTerm);
   }
+
   public changeLanguage(lang: string) {
     this.translate.use(lang);
     localStorage.setItem('language', lang);
@@ -143,11 +133,11 @@ export class SystemComponent implements OnInit{
     return color;
   }
 
-  toggleAccountVisibility(accountNumber: string) {
+  public toggleAccountVisibility(accountNumber: string) {
     this.accountVisibility[accountNumber] = !this.accountVisibility[accountNumber];
   }
 
-  toggleBalanceVisibility(accountNumber: string) {
+  public toggleBalanceVisibility(accountNumber: string) {
     this.balanceVisibility[accountNumber] = !this.balanceVisibility[accountNumber];
   }
 
