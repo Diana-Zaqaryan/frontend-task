@@ -1,5 +1,129 @@
-<div class="system-container">
+<div class="system-container" *ngIf="!isLoading">
   <header>
+    <div class="header-container">
+      <div class="right-side">
+        <div class="log">
+<!--          <img src="assets/logo.png" alt="logo">-->
+        </div>
+      </div>
 
+      <div class="left-side">
+        <div class="search">
+          <input type="search" id="search" [(ngModel)]="searchTerm" placeholder="{{ 'SEARCH' | translate }}" (input)="onSearch()">
+          <i class="fas fa-search" style="font-size: 16px"></i>
+        </div>
+
+        <div class="user-data">
+          <div class="personal-info">
+            <div class="user-name">
+              {{ 'USER.FIRST_NAME' | translate }} {{ 'USER.LAST_NAME' | translate }}
+            </div>
+            <div class="user-passport">{{ userData.passportNumber }}
+              <user-info [options]="companiesData"></user-info>
+            </div>
+          </div>
+          <div class="account" [ngStyle]="{'background-color': accountColor}">
+            {{ userData.firstName.slice(0,1) }}
+          </div>
+        </div>
+
+        <div class="header-icons">
+          <div class="not-block">
+            <i class="fas fa-bell" title="{{ 'NOTIFICATIONS' | translate }}">
+              <span class="not-number">2</span>
+            </i>
+          </div>
+          <i class="fas fa-envelope" title="{{ 'MAIL' | translate }}">
+            <span class="mail-number">2</span>
+          </i>
+          <i class="fas fa-cogs" title="{{ 'SETTINGS' | translate }}"></i>
+        </div>
+
+        <div class="lang-btn">
+          <button (click)="changeLanguage('en')">EN</button>
+          <button (click)="changeLanguage('ru')">РУ</button>
+          <button (click)="changeLanguage('hy')">ՀԱՅ</button>
+        </div>
+        <i class="fas fa-sign-out-alt" title="{{ 'LOGOUT' | translate }}" (click)="logout()"></i>
+
+      </div>
+    </div>
   </header>
+
+
+  <main>
+    <div class="main-container">
+
+      <div class="title">
+        Title
+      </div>
+
+      <div class="main-content">
+        @for (item of bankAccounts; track item.accountNumber) {
+          <div class="account-details">
+            <div class="visa">
+              <img src="assets/VIsa.png" alt="visa" class="visa">
+            </div>
+
+            <div class="type">
+              <label for="type">Account type</label>
+              <span id="type">{{ item.accountType| uppercase }}</span>
+            </div>
+
+
+            <div class="number">
+              <label for="number">Account number</label>
+              <div class="number-input">
+                <input [disabled]="true" id="number"
+                       [type]="accountVisibility[item.accountNumber] ? 'text' : 'password'"
+                       [value]="item.accountNumber | numberTransform">
+                <i class="fa"
+                   [class.fa-eye]="!accountVisibility[item.accountNumber]"
+                   [class.fa-eye-slash]="accountVisibility[item.accountNumber]"
+                   (click)="toggleAccountVisibility(item.accountNumber)"></i>
+              </div>
+
+            </div>
+
+
+            <div class="currency">
+              <label for="currency">Currency</label>
+              <span id="currency">{{ item.currency }}</span>
+            </div>
+
+
+            <div class="balance">
+              <label for="balance">Balance</label>
+              <div class="balance-info">
+                <input [disabled]="true" id="balance"
+                       [type]="balanceVisibility[item.accountNumber] ? 'text' : 'password'"
+                       [value]="item.balance ">
+                <i class="fa"
+                   [class.fa-eye]="!balanceVisibility[item.accountNumber]"
+                   [class.fa-eye-slash]="balanceVisibility[item.accountNumber]"
+                   (click)="toggleBalanceVisibility(item.accountNumber)"></i>
+              </div>
+
+            </div>
+
+          </div>
+
+        }
+      </div>
+
+      <div class="additional-info-container">
+        <div class="additional-info">
+          <div class="additional-title">
+            {{ 'additional info' | uppercase }}
+          </div>
+          <div class="additional-content">
+            {{additionalData.description}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
 </div>
+
+

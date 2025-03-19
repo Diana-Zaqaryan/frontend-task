@@ -14,6 +14,7 @@ export class authGuard implements CanActivate {
     const routePath = route.url[0]?.path;
 
     if (isLoggedIn && routePath === 'login') {
+      console.log('mtav')
       this.router.navigate(['system']);
       return false;
     }

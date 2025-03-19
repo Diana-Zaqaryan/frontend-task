@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 2fr 1fr;
   height: 100vh;
+  position: relative;
 }
 
 .left-section {
@@ -12,16 +13,19 @@
   background: rgba(0, 0, 0, 70%);
   padding: 20px;
   text-align: center;
+  position: relative;
 }
 
 .logo {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 450px;
+  position: absolute;
+  left: 15%;
+  top: 15%;
 }
 .logo img {
-  max-width: 150px;
+  width: 150px;
   margin-bottom: 20px;
 }
 
@@ -33,14 +37,17 @@
   text-align: start;
 }
 
-.right-section {
+.right-section, form{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
   width: 370px;
-  margin: 0 auto;
   gap: 2.5em;
+  margin: 0 auto;
+}
+form {
+  margin: 0 auto;
 }
 
 .phone-container {
@@ -70,6 +77,9 @@ input {
   &:focus-visible {
     outline: none;
   }
+
+}
+#phone {
   &:-internal-autofill-selected-internal-autofill-selected {
     background-color: #fff !important;
   }
@@ -77,6 +87,9 @@ input {
 #password {
   width: 100%;
   border-radius:  10px;
+  &:-internal-autofill-selected-internal-autofill-selected {
+    background-color: #fff !important;
+  }
 }
 
 #handle-btn {
@@ -112,15 +125,53 @@ select {
   top: 0.7em;
 }
 
+.lang-btn {
+  position: absolute;
+  top: 5%;
+  right: 0;
+  button{
+    background: none;
+    border: none;
+    border-right: 1px solid;
+    font-size: 14px;
+    padding: 0 10px;
+    cursor: pointer;
+    &:last-child {
+      border-right: none;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 /**** Media ******/
 
+@media (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
 @media (max-width: 768px) {
   .grid-container {
     grid-template-columns: 1fr;
   }
 
-  .logo {
-    align-items: center;
+  .lang-btn {
+    top: 52%;
   }
+  .logo {
+    left: 25%;
+    top: 30%;
+  }
+
+  .logo img{
+    width: 200px;
+  }
+  .transaction-message {
+    font-size: 20px;
+  }
+
 
 }

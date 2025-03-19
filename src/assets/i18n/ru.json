@@ -4,5 +4,15 @@
   "ENTER_MOBILE_NUMBER": "Введите номер телефона",
   "ENTER_PASSWORD": "Введите пароль",
   "NEXT": "Далее",
-  "LOGIN": "Войти"
+  "LOGIN": "Войти",
+  "SEARCH": "Поиск",
+  "NOTIFICATIONS": "Уведомления",
+  "MAIL": "Почта",
+  "SETTINGS": "Настройки",
+  "LOGOUT": "Выйти",
+  "LOADING_MESSAGE": "Загрузка данных, пожалуйста, подождите...",
+  "USER": {
+    "FIRST_NAME": "Джон",
+    "LAST_NAME": "Смит"
+  }
 }

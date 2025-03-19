@@ -4,5 +4,15 @@
   "ENTER_MOBILE_NUMBER": "Enter mobile number",
   "ENTER_PASSWORD": "Enter password",
   "NEXT": "Next",
-  "LOGIN": "Login"
+  "LOGIN": "Login",
+  "SEARCH": "Search",
+  "NOTIFICATIONS": "Notifications",
+  "MAIL": "Mail",
+  "SETTINGS": "Settings",
+  "LOGOUT": "Logout",
+  "LOADING_MESSAGE": "Loading data, please wait...",
+  "USER": {
+    "FIRST_NAME": "John",
+    "LAST_NAME": "Smith"
+  }
 }

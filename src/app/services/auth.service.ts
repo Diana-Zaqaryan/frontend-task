@@ -16,16 +16,17 @@ export class AuthService {
 
   public login(token: string): void {
     this.loggedIn = true;
-    localStorage.setItem('auth-token', token);
+    localStorage.setItem('authToken', token);
   }
 
   public logout(): void {
     this.loggedIn = false;
-    localStorage.removeItem('auth-token');
+    localStorage.removeItem('authToken');
   }
 
   public setToken(token: string) {
     localStorage.setItem(this.tokenKey, token);
+    this.loggedIn = true
   }
 
   public getToken() {

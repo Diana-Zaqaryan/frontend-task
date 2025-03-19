@@ -1,26 +1,22 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {HttpService} from '../../services/http.service';
 import {AuthService} from '../../services/auth.service';
-import {FormsModule} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {onlyNumbersDirective} from '../../directives/only-numbers.directive';
 import {CountryModel} from '../../../utils/models/country.model';
 import {Router} from '@angular/router';
 import {CustomSelectComponent} from '../custom-select/custom-select.component';
-import {HttpClient} from '@angular/common/http';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateModule, TranslateService} from '@ngx-translate/core';
 
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
+
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'], // Corrected 'styleUrl' to 'styleUrls'
-  imports: [FormsModule, CommonModule, onlyNumbersDirective, CustomSelectComponent, TranslateModule],
+  styleUrls: ['./login.component.scss'],
+  imports: [FormsModule,ReactiveFormsModule, CommonModule, onlyNumbersDirective, CustomSelectComponent, TranslateModule],
 })
 export class LoginComponent {
   public countries: CountryModel[] = [];
@@ -30,16 +26,22 @@ export class LoginComponent {
   public isPasswordVisible: boolean = false;
   public isPhoneSendSuccess: boolean = false;
   public passwordVisible: boolean = false;
+  public loginForm!: FormGroup;
 
   constructor(private httpService: HttpService,
               private router: Router,
               private authService: AuthService,
               private translate: TranslateService,
+              private fb: FormBuilder,
               private cdr: ChangeDetectorRef) {
     this.translate.setDefaultLang('en');
+
   }
 
   ngOnInit() {
+    this.loginForm = this.fb.group({
+      phone: ['', Validators.required],
+    })
     this.translate.setDefaultLang('en')
     this.httpService.getCountries().subscribe(
       (data: any) => {
@@ -63,27 +65,26 @@ export class LoginComponent {
   public next() {
     if (!this.selectedCountry) return;
 
-    const sendValue = this.selectedCountry.countryCode + this.phoneNumber;
-    this.httpService.checkPhone({username: sendValue}).subscribe(
-      () => {
-        this.isPhoneSendSuccess = true;
-        this.isPasswordVisible = true;
-      },
-      (error) => {
-        console.error('Error checking phone:', error);
+    const phoneNumber = this.selectedCountry.countryCode + this.loginForm.get('phone')?.value;
+    this.httpService.checkPhone({username: phoneNumber}).subscribe( () => {
+      this.isPhoneSendSuccess = true;
+      this.isPasswordVisible = true;
+      if (!this.loginForm.contains('password')) {
+        this.loginForm.addControl('password', this.fb.control('', Validators.required));
+      }
       }
     );
   }
 
   public login() {
     if (!this.selectedCountry) return;
-    const username = this.selectedCountry.countryCode + this.phoneNumber;
+    const username = this.selectedCountry.countryCode + this.loginForm.get('phone')?.value;
+    const password = this.loginForm.get('password')?.value
     try {
-      this.httpService.login(username, this.password).subscribe(
+      this.httpService.login(username, password).subscribe(
         (response) => {
           this.authService.setToken(response.token);
           this.router.navigate(['system']);
-          this.cdr.detectChanges()
         },
         (error) => {
           console.error('Login error:', error);

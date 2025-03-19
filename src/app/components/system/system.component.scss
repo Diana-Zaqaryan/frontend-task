@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+@mixin flex-style {
+  display: flex;
+  flex-direction: column;
+  gap: 5em;
+}
+header {
+  background: #4D4D4D;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1em;
+  flex-wrap: wrap;
+}
+
+
+.left-side {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  flex-wrap: wrap;
+}
+
+
+.header-icons{
+  display: flex;
+  gap: 2em;
+  justify-content: space-between;
+}
+
+i {
+  color: #ffffff;
+  font-size: 22px;
+}
+
+.personal-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.lang-btn {
+  button{
+    background: none;
+    border: none;
+    border-right: 1px solid;
+    font-size: 14px;
+    padding: 0 10px;
+    cursor: pointer;
+    color: #ffffff;
+    &:last-child {
+      border-right: none;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+.search {
+  position: relative;
+}
+
+#search {
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  height: 24px;
+  width: 170px;
+  padding: 15px 25px ;
+  color: #ffffff;
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+i {
+  color: #ffffff;
+}
+
+
+.fa-search {
+  position: absolute;
+  top: 25%;
+  left: 5%;
+}
+
+.user-data{
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.user-data div{
+  color: #ffffff;
+}
+
+.user-passport {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.account {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+  padding: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-bell, .fa-envelope {
+  position: relative;
+}
+.not-number, .mail-number {
+  position: absolute;
+  background: #ff4733;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 1px 5px;
+  border-radius: 50%;
+  bottom: 50%;
+  left: 50%;
+}
+
+.main-container {
+  width: 60%;
+  margin: 5em auto;
+  @include flex-style
+}
+
+.main-content  {
+  display: flex;
+  flex-direction: column;
+  gap: 5em;
+  margin-top: 5em;
+  border: 1px solid #ff4733;
+  border-radius: 10px;
+  padding: 25px;
+
+}
+.account-details {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ff4733;
+  padding: 10px 0;
+  &:last-child{
+    border: none;
+  }
+
+}
+
+.number, .account, .balance, .currency, .type {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .5em;
+  span {
+    width: 145px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
+
+
+.visa  {
+  width: 100px;
+  border-radius: 10px;
+}
+
+
+label {
+  font-size: 12px;
+  color: rgba(77, 77, 77, 50%);
+}
+
+
+.fa-eye, .fa-eye-slash {
+  color: #4D4D4D;
+  font-size: 16px;
+}
+
+
+#number, #balance{
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  width: 100px;
+}
+
+input[type="password"] {
+  font-family: monospace ;
+}
+
+.number-input, .balance-info{
+  display: flex;
+  gap: .5em;
+}
+
+
+.title {
+  font-size: 20px;
+}
+
+
+.additional-info-container {
+  border: 1px solid rgba(77,77,77, 50%);
+  border-radius: 15px;
+}
+
+.additional-info {
+  @include flex-style
+}
+.additional-title {
+  background: rgba(77,77,77, 50%);
+  border-radius: 15px  15px 0 0;
+  height: 2em;
+
+}
+

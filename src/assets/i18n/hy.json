@@ -4,5 +4,15 @@
   "ENTER_MOBILE_NUMBER": "Մուտքագրեք հեռախոսահամարը",
   "ENTER_PASSWORD": "Մուտքագրեք գաղտնաբառը",
   "NEXT": "Հաջորդը",
-  "LOGIN": "Մուտք"
+  "LOGIN": "Մուտք",
+  "SEARCH": "Որոնում",
+  "NOTIFICATIONS": "Ծանուցումներ",
+  "MAIL": "Փոստ",
+  "SETTINGS": "Կարգավորումներ",
+  "LOGOUT": "Ելք",
+  "LOADING_MESSAGE": "Տվյալները բեռնվում են, խնդրում ենք սպասել...",
+  "USER": {
+    "FIRST_NAME": "Ջոն",
+    "LAST_NAME": "Սմիթ"
+  }
 }
